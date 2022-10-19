@@ -93,10 +93,10 @@ def make_wall_post(comics_upload_url, access_token, comics_pic_comment, group_id
 def main():
 
     load_dotenv()
-    access_token = os.environ['ACCESS_TOKEN']
-    group_id = os.environ['GROUP_ID']
-    user_id = os.environ['USER_ID']
-    version = os.environ['VERSION']
+    access_token = os.environ['VK_ACCESS_TOKEN']
+    group_id = os.environ['VK_GROUP_ID']
+    user_id = os.environ['VK_USER_ID']
+    version = os.environ['VK_VERSION']
 
     comics_random_number = fetch_random_issue()
     comics_upload_url, comics_pic_comment = fetch_vk_server_link(comics_random_number, access_token, version)

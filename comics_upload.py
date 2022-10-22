@@ -61,7 +61,7 @@ def upload_comic_to_vk_server(vk_version, vk_access_token, vk_group_id):
     return vk_hash, vk_photo_id, vk_server_number
 
 
-def save_to_vk_server(vk_access_token, vk_hash, vk_photo_id, vk_server_number, vk_version, vk_group_id, vk_user_id):
+def save_comic_to_vk_server(vk_access_token, vk_hash, vk_photo_id, vk_server_number, vk_version, vk_group_id, vk_user_id):
 
     url = 'https://api.vk.com/method/photos.saveWallPhoto'
     params = {
@@ -84,7 +84,7 @@ def save_to_vk_server(vk_access_token, vk_hash, vk_photo_id, vk_server_number, v
     return vk_group_owner_id, vk_save_id
 
 
-def post_to_vk_wall(vk_version, vk_access_token, vk_group_owner_id, vk_save_id, comic_pic_comment):
+def post_comic_to_vk_wall(vk_version, vk_access_token, vk_group_owner_id, vk_save_id, comic_pic_comment):
 
     vk_wall_post_url = 'https://api.vk.com/method/wall.post'
     params = {
@@ -111,9 +111,9 @@ def main():
 
         comic_pic_comment = download_random_comic()
         vk_hash, vk_photo_id, vk_server_number = upload_comic_to_vk_server(vk_version, vk_access_token, vk_group_id)
-        vk_group_owner_id, vk_save_id = save_to_vk_server(vk_access_token, vk_hash, vk_photo_id, vk_server_number, vk_version, vk_group_id, vk_user_id)
+        vk_group_owner_id, vk_save_id = save_comic_to_vk_server(vk_access_token, vk_hash, vk_photo_id, vk_server_number, vk_version, vk_group_id, vk_user_id)
 
-        post_to_vk_wall(vk_version, vk_access_token, vk_group_owner_id, vk_save_id, comic_pic_comment)
+        post_comic_to_vk_wall(vk_version, vk_access_token, vk_group_owner_id, vk_save_id, comic_pic_comment)
 
     except ValueError: 
         print('Something went wrong, ValueError raised')
